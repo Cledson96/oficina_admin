@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+}
+
+.layout-default-login {
+    background-image: url('/img/login.jpg');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-login {
+    margin: 0 auto;
+}
+
+.layout-default {
+    width: 100vw;
+    min-height: 100vh;
+
+}
+
+.sidebar {
+    background: #fffcfc !important;
+}
+
+.header {
+    background: #fffcfc !important;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.logo-sidebar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.button-collapse {
+    font-size: 24px !important;
+    color: #e79418;
+}
+
+.icon-menu {
+    display: flex;
+}
+
+:where(.css-dev-only-do-not-override-d2lrxs).ant-menu-light .ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-d2lrxs).ant-menu-light>.ant-menu .ant-menu-item-selected {
+    color: #c77e12 !important;
+    background-color: #e09f3f23;
+}
+
+:where(.css-dev-only-do-not-override-d2lrxs).ant-menu {
+    font-size: 16px !important;
+}
