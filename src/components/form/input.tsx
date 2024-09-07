@@ -1,5 +1,5 @@
 "use client";
-import { Form, Input, Select } from "antd";
+import { Form, Input, Select, Switch } from "antd";
 
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
@@ -22,7 +22,8 @@ interface InputsProps {
     | "password"
     | "select"
     | "textarea"
-    | "upload";
+    | "upload"
+    | "switch";
   config?: { [key: string]: any };
   selects?: { name: string; value: string }[];
   rows?: number;
@@ -144,6 +145,24 @@ export default function Inputs({
                   );
                 })}
               </Select>
+            </Form.Item>
+          </>
+        );
+      case "switch":
+        return (
+          <>
+            <Form.Item
+              label={label}
+              name={name}
+              rules={[
+                {
+                  required,
+                  message,
+                },
+              ]}
+              labelCol={{ className: classLabel }}
+            >
+              <Switch {...config} className={classInput} />
             </Form.Item>
           </>
         );

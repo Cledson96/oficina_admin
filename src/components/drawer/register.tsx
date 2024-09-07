@@ -8,6 +8,9 @@ interface RegisterProps {
   title: string;
   extra?: React.ReactNode;
   children: React.ReactNode;
+  classTitle?: string;
+  width?: number;
+  close?: () => void;
 }
 
 export default function Register({
@@ -16,13 +19,18 @@ export default function Register({
   title,
   extra,
   children,
+  classTitle = "text-default text-2xl font-bold",
+  width = 400,
+  close = () => setOpen(false),
 }: RegisterProps) {
-  const onClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <Drawer title={title} onClose={onClose} open={open} extra={extra}>
+    <Drawer
+      title={<span className={classTitle}>{title}</span>}
+      onClose={close}
+      open={open}
+      extra={extra}
+      width={width}
+    >
       {children}
     </Drawer>
   );

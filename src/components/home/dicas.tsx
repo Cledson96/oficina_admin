@@ -21,10 +21,15 @@ export default function Dicas() {
   const [dicas, setDicas] = useState<DataType[]>([]);
   const [visible, setVisible] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
+  const [activeRefresh, setRefresh] = useState(false);
 
   const activeImg = (url: string) => {
     setImgUrl(url);
     setVisible(true);
+  };
+
+  const refresh = () => {
+    setRefresh(!activeRefresh);
   };
 
   useEffect(() => {
@@ -38,7 +43,7 @@ export default function Dicas() {
         console.log("Erro ao buscar as dicas 111");
         console.log(error);
       });
-  }, []);
+  }, [activeRefresh]);
   console.log(dicas, "dicas");
   const columns: ColumnsType<DataType> = [
     {
@@ -72,7 +77,11 @@ export default function Dicas() {
 
   return (
     <div>
-      <Table<DataType> columns={columns} data={dicas} showTitle={HeaderDicas} />
+      <Table<DataType>
+        columns={columns}
+        data={dicas}
+        showTitle={() => <HeaderDicas refresh={refresh} />}
+      />
       <Image
         style={{ display: "none" }}
         src={imgUrl}

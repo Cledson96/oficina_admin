@@ -1,12 +1,14 @@
 "use client";
-import { Layout, Card } from "antd";
+
 import Title from "@components/text/title";
-import Input from "@components/form/input";
-import { Button, Form, Row, Col } from "antd";
+
+import { InputEmail, InputPassword } from "@/components/form/inputs";
+import { Form, Row, Col, Layout, Card } from "antd";
 import { ChangeEvent, useState } from "react";
 import { useAuth } from "@context/auth";
 import { openNotificationWithIcon } from "@utils/notificationUtil";
 import { useRouter } from "next/navigation";
+import Button from "@components/button/default";
 
 interface credentials {
   email: string;
@@ -64,10 +66,8 @@ export default function Page() {
         <Form form={form} layout="vertical" onFinish={sign}>
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24}>
-              <Input
-                type="email"
+              <InputEmail
                 name="email"
-                message="Obrigatório preencher o email corretamente"
                 label="EMAIL:"
                 required
                 config={{
@@ -79,9 +79,8 @@ export default function Page() {
           </Row>
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24}>
-              <Input
+              <InputPassword
                 name="senha"
-                type="password"
                 label="SENHA:"
                 required
                 config={{

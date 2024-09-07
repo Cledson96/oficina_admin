@@ -10,6 +10,7 @@ type CustomButtonProps = Omit<ButtonProps, "type"> & {
     | "text"
     | "default"
     | "success"
+    | "gray"
     | "error";
 };
 
@@ -28,6 +29,13 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
       color: white;
     }
   `,
+  grayButton: css`
+    &.${prefixCls}-btn-gray {
+      background-color: #bebcbc;
+      border-color: #9c9a9a;
+      color: black;
+    }
+  `,
 }));
 
 export default function CustomButton({
@@ -39,10 +47,19 @@ export default function CustomButton({
 
   let className = "";
 
-  if (type === "success") {
-    className = styles.successButton;
-  } else if (type === "error") {
-    className = styles.errorButton;
+  switch (type) {
+    case "success":
+      className = styles.successButton;
+      break;
+    case "error":
+      className = styles.errorButton;
+      break;
+    case "gray":
+      className = styles.grayButton;
+      break;
+    default:
+      className = "";
+      break;
   }
 
   return (
